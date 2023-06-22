@@ -47,7 +47,7 @@ resource "aws_subnet" "private_compute_subnet_az1" {
 
 # create public subnet az1
 resource "aws_subnet" "public_gateway_subnet_az2" {
-  vpc_id                  = aws_vpc.project_vpc.id
+  vpc_id            = aws_vpc.project_vpc.id
   cidr_block        = var.az2_gateway_subnet_cidr
   availability_zone = data.aws_availability_zones.available_zones.names[1]
 

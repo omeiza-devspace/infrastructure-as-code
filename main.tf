@@ -14,3 +14,11 @@ module "vpc" {
   az2_proxy_subnet_cidr   = var.az2_proxy_subnet_cidr
   az2_compute_subnet_cidr = var.az2_compute_subnet_cidr
 }
+
+# create  security groups
+module "security_groups" {
+  source = "./modules/security-group"
+
+  vpc_id   = module.vpc.vpc_id
+  vpc_name = module.vpc.vpc_name
+}
