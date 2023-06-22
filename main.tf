@@ -22,3 +22,21 @@ module "security_groups" {
   vpc_id   = module.vpc.vpc_id
   vpc_name = module.vpc.vpc_name
 }
+
+
+module "app_load_balancer" {
+  source = "./modules/alb"
+
+  vpc_id                         = module.vpc.vpc_id
+  vpc_name                       = module.vpc.vpc_name
+  public_alb_security_group_id   = module.security_groups.public_alb_security_group_id
+  internal_alb_security_group_id = module.security_groups.internal_alb_security_group_id
+
+  public_subnet_az1_id = module.vpc.public_subnet_az1_id
+  public_subnet_az2_id = module.vpc.public_subnet_az2_id
+
+  private_proxy_subnet_az1_id   = module.vpc.private_proxy_subnet_az1_id
+  private_proxy_subnet_az2_id   = module.vpc.private_proxy_subnet_az2_id
+  private_compute_subnet_az1_id = module.vpc.private_compute_subnet_az1_id
+  private_compute_subnet_az2_id  = module.vpc.private_compute_subnet_az2_id
+}

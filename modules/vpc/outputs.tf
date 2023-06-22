@@ -22,6 +22,26 @@ output "public_subnet_az1_id" {
   value = aws_subnet.public_gateway_subnet_az1.id
 }
 
+output "public_subnet_az2_id" {
+  value = aws_subnet.public_gateway_subnet_az2.id
+}
+
+output "private_proxy_subnet_az1_id" {
+    value = aws_subnet.private_proxy_subnet_az1.id
+}
+
+output "private_proxy_subnet_az2_id" {
+    value = aws_subnet.private_proxy_subnet_az2.id
+}
+
+output "private_compute_subnet_az1_id" {
+    value = aws_subnet.private_compute_subnet_az1.id
+}
+
+output "private_compute_subnet_az2_id" {
+    value = aws_subnet.private_compute_subnet_az2.id
+}
+
 output "az1_gateway_subnet_cidr" {
   value = var.az1_gateway_subnet_cidr
 }
