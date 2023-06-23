@@ -7,3 +7,17 @@ az1_compute_subnet_cidr = "10.0.3.0/24"
 az2_gateway_subnet_cidr = "10.0.4.0/24"
 az2_proxy_subnet_cidr   = "10.0.5.0/24"
 az2_compute_subnet_cidr = "10.0.6.0/24"
+
+nginx_max_instance_size = 0
+nginx_min_instance_size = 0
+nginx_desired_capacity  = 0
+
+app_max_instance_size = 0
+app_min_instance_size = 0
+app_desired_capacity  = 0
+
+bastion_max_instance_size = 0
+bastion_min_instance_size = 0
+bastion_desired_capacity  = 0
+
+ssh_key_pair = "~/.ssh/terraform_ssh_key.pub"

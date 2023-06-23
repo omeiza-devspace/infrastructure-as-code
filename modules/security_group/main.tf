@@ -35,12 +35,12 @@ resource "aws_security_group" "public_alb_security_group" {
 
 # create security group for the bastion host aka jump box
 resource "aws_security_group" "bastion_security_group" {
-  name        = "baston sec grp"
-  description = "enable ssh access on port 22 to baston from devops engineers"
+  name        = "bastion sec grp"
+  description = "enable ssh access on port 22 to bastion from devops engineers"
   vpc_id      = var.vpc_id
 
   ingress {
-    description = "ssh access to baston"
+    description = "ssh access to bastion"
     from_port   = 22
     to_port     = 22
     protocol    = "ssh"
@@ -56,18 +56,18 @@ resource "aws_security_group" "bastion_security_group" {
   }
 
   tags = {
-    Name = "${var.vpc_name}-ssh-access-to-baston"
+    Name = "${var.vpc_name}-ssh-access-to-bastion"
   }
 }
 
 # create security group for the nginx proxy server
 resource "aws_security_group" "nginx_security_group" {
   name        = "nginx sec grp"
-  description = "enable ssh access on port 22 to nginx via baston-sg and http,https via public-alb-sg"
+  description = "enable ssh access on port 22 to nginx via bastion-sg and http,https via public-alb-sg"
   vpc_id      = var.vpc_id
 
   ingress {
-    description     = "ssh access from baston"
+    description     = "ssh access from bastion"
     from_port       = 22
     to_port         = 22
     protocol        = "ssh"
@@ -98,7 +98,7 @@ resource "aws_security_group" "nginx_security_group" {
   }
 
   tags = {
-    Name = "${var.vpc_name}-ssh-via-baston-and-http-https-via-alb"
+    Name = "${var.vpc_name}-ssh-via-bastion-and-http-https-via-alb"
   }
 }
 
@@ -131,11 +131,11 @@ resource "aws_security_group" "internal_alb_security_group" {
 # create security group for the application
 resource "aws_security_group" "app_security_group" {
   name        = "internal alb sec grp"
-  description = "enable ssh access on port 22 via baston-sg"
+  description = "enable ssh access on port 22 via bastion-sg"
   vpc_id      = var.vpc_id
 
   ingress {
-    description     = "ssh access via baston"
+    description     = "ssh access via bastion"
     from_port       = 22
     to_port         = 22
     protocol        = "ssh"
@@ -158,7 +158,7 @@ resource "aws_security_group" "app_security_group" {
   }
 
   tags = {
-    Name = "${var.vpc_name}-ssh-via-baston-and-http-via-internal-alb-to-app"
+    Name = "${var.vpc_name}-ssh-via-bastion-and-http-via-internal-alb-to-app"
   }
 }
 

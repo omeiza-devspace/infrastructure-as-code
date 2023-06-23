@@ -6,7 +6,7 @@ resource "aws_lb" "public_net_load_balancer" {
   internal                   = false
   load_balancer_type         = "application"
   security_groups            = [var.public_alb_security_group_id]
-  subnets                    = [var.public_subnet_az1_id, var.public_subnet_az2_id]
+  subnets                    = [var.public_gateway_subnet_az1_id, var.public_gateway_subnet_az2_id]
   enable_deletion_protection = false
   ip_address_type            = "ipv4"
 
@@ -23,7 +23,7 @@ resource "aws_lb_listener" "Public_alb_http_listener" {
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.nginx_alb_target_group.arn
+    target_group_arn = aws_lb_target_group.nginx_alb_target_group.id
   }
 }
 
@@ -55,12 +55,12 @@ resource "aws_lb" "internal_app_load_balancer" {
 
 # create a listener on port 80 with redirect action
 resource "aws_lb_listener" "internal_alb_http_listener" {
-  load_balancer_arn = aws_lb.internal_app_load_balancer.arn
+  load_balancer_arn = aws_lb.internal_app_load_balancer.id
   port              = 80
   protocol          = "HTTP"
 
   default_action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.app_alb_target_group.arn
+    target_group_arn = aws_lb_target_group.app_alb_target_group.id
   }
 }

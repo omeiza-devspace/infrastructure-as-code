@@ -17,9 +17,9 @@ resource "aws_lb_target_group" "nginx_alb_target_group" {
   }
 }
 
-# create baston target group
-resource "aws_lb_target_group" "baston_alb_target_group" {
-  name        = "${var.vpc_name}-baston-alb-tgt-grp"
+# create bastion target group
+resource "aws_lb_target_group" "bastion_alb_target_group" {
+  name        = "${var.vpc_name}-bastion-alb-tgt-grp"
   target_type = "instance"
   port        = 80
   protocol    = "HTTP"

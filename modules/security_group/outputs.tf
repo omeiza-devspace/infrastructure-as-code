@@ -14,6 +14,6 @@ output "internal_alb_security_group_id" {
   value = aws_security_group.internal_alb_security_group.id
 }
 
-output "app_security_group" {
+output "app_security_group_id" {
   value = aws_security_group.app_security_group.id
 }
