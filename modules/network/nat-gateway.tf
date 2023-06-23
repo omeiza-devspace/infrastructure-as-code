@@ -1,6 +1,6 @@
 # allocate elastic ip. this eip will be used for the nat-gateway in the public subnet az1 
 resource "aws_eip" "nat_eip" {
-  vpc        = aws_vpc.project_vpc.id
+  domain     = "vpc"      
   depends_on = [aws_internet_gateway.internet_gateway]
 
   tags = {

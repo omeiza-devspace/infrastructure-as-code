@@ -2,8 +2,8 @@ locals {
   aws_bucket_name = "" # REPLACE WITH YOUR BUCKET NAME
   file_directory  = "" # REPLACE WITH YOUR FILE NAME
   aws_region      = var.region
-  dynamodb_table  = "" # REPLACE WITH YOUR TABLE NAME
-  encrypt_data    = true
+  dynamodb_table  = ""               # REPLACE WITH YOUR TABLE NAME
+  encrypt_data    = var.encrypt_data #true
 }
 
 

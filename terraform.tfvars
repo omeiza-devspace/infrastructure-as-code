@@ -21,3 +21,10 @@ bastion_min_instance_size = 0
 bastion_desired_capacity  = 0
 
 ssh_key_pair = "~/.ssh/terraform_ssh_key.pub"
+
+s3_bucket_name         = ""
+aws_profile_name       = ""
+document_directory     = ""
+dynamodb_table_name    = ""
+enable_data_encryption = true
+enable_data_version    = "Enabled"
